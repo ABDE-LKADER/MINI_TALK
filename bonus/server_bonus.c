@@ -6,13 +6,20 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/09 18:22:09 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:36:13 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
 int	g_set_bit = 128;
+
+static void	error_handler(void)
+{
+	write(2, RED"Usage: "RST, 18);
+	write(2, "./server <empty>\n", 17);
+	exit (EXIT_FAILURE);
+}
 
 void	check_pid(int *old_pid, int new_pid, int *mess, int *bits)
 {
@@ -48,10 +55,13 @@ static void	signal_handler(int signal_client, siginfo_t *sig_inf, void *none)
 	}
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	struct sigaction	sa;
 
+	(void)av;
+	if (ac != 1)
+		error_handler();
 	sa.sa_sigaction = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

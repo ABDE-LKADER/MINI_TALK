@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/10 09:53:49 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:28:56 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,35 @@ static void	error_handler(int ac, char *av)
 {
 	if (ac != 3)
 	{
-		write(2, "\033[1;31mUsage: ", 14);
-		write(2, "\033[0m./client <server_pid> <message>\n", 36);
+		write(2, RED"Usage: "RST, 18);
+		write(2, "./client <server_pid> <message>\n", 32);
 		exit (EXIT_FAILURE);
 	}
 	while (*av)
 	{
 		if (!ft_strchr("-+0123456789", *av++))
 		{
-			write(2, "\033[1;31mError: \033[0mInvalid server PID.\n", 38);
-			write(2, "\033[0;33m-> Provide a valid PID ", 30);
+			write(2, RED"Error: "RST"Invalid server PID.\n", 38);
+			write(2, YEL"-> Provide a valid PID ", 30);
 			write(2, "<numeric value only> please.\n", 29);
 			exit (EXIT_FAILURE);
 		}
+	}
+}
+
+static void	error_handler_plus(int server_pid)
+{
+	if (kill(server_pid, 0) == -1)
+	{
+		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
+		write(2, "-> Provide a valid PID <the server pid> please.\n", 48);
+		exit (EXIT_FAILURE);
+	}
+	if (server_pid <= 0)
+	{
+		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
+		write(2, "-> Provide a valid PID <greater than 0> please.\n", 48);
+		exit (EXIT_FAILURE);
 	}
 }
 
@@ -56,12 +72,7 @@ int	main(int ac, char **av)
 
 	error_handler(ac, av[1]);
 	server_pid = ft_atoi(av[1]);
-	if (server_pid <= 0)
-	{
-		write(2, "\033[1;31mError: \033[0mInvalid server PID.\n\033[0;33m", 45);
-		write(2, "-> Provide a valid PID <greater than 0> please.\n", 48);
-		return (EXIT_FAILURE);
-	}
+	error_handler_plus(server_pid);
 	while (*av[2])
 		signal_handler(server_pid, *av[2]++);
 	return (signal_handler(server_pid, '\0'),
