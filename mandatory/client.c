@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/17 11:28:56 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:58:55 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int ac, char **av)
 {
 	pid_t	server_pid;
 
+	signal(SIGUSR1, (void *)IGNORE);
 	error_handler(ac, av[1]);
 	server_pid = ft_atoi(av[1]);
 	error_handler_plus(server_pid);

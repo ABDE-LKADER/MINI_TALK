@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/17 11:35:46 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:59:36 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	signal_handler(int server_pid, unsigned char mes)
 	}
 }
 
-void	feedback(int sig)
+static void	feedback(int sig)
 {
 	(void)sig;
 	ft_printf("\033[1;33m[SUCCESS]: \033[0m");
@@ -77,7 +77,7 @@ int	main(int ac, char **av)
 {
 	pid_t	server_pid;
 
-	signal(SIGUSR1, &feedback);
+	signal(SIGUSR1, feedback);
 	error_handler(ac, av[1]);
 	server_pid = ft_atoi(av[1]);
 	error_handler_plus(server_pid);

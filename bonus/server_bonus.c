@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/17 11:36:13 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:25:45 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ int	main(int ac, char **av)
 		error_handler();
 	sa.sa_sigaction = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
 	ft_printf("The server PID: %d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
