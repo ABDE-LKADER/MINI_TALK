@@ -6,7 +6,7 @@
 #    By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 17:35:19 by abadouab          #+#    #+#              #
-#    Updated: 2024/01/19 17:35:21 by abadouab         ###   ########.fr        #
+#    Updated: 2024/04/17 09:06:38 by abadouab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,11 @@ FLGS =	cc -Wall -Wextra -Werror
 OBJS =	$(SRCS:.c=.o)
 RM   =	rm -fr
 
+GREEN		=	"\033[1;32m"
+YELOW 		=	"\033[1;33m"
+REDCL 		=	"\033[1;31m"
+RESET 		=	"\033[0m"
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -31,6 +36,7 @@ $(NAME): $(OBJS)
 
 %.o: %.c $(LIBH)
 	@$(FLGS) -c $< -o $@
+	@printf $(GREEN)"."$(RESET)
 
 clean:
 	@$(RM) $(OBJS)

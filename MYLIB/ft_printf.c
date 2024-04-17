@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 09:24:30 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/01 17:59:08 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:03:27 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	print_string(char *str)
 	return (ft_putstr_fd(str, 1), ft_strlen(str));
 }
 
-int	format_set(char format, va_list lstarg)
+static int	format_set(char format, va_list lstarg)
 {
 	int	print;
 
@@ -48,24 +48,20 @@ int	format_set(char format, va_list lstarg)
 
 int	ft_printf(const char *format, ...)
 {
-	int		i;
 	int		print;
 	va_list	lstarg;
 
-	i = 0;
 	print = 0;
+	if (!format || write(1, format, 0) == -1)
+		return (-1);
 	va_start(lstarg, format);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			if (ft_strchr("cspdiuxX%", format[i]))
-				print += format_set(format[i], lstarg);
-		}
+		if (*format == '%' && ft_strchr(SPECIFIERS, *(format + 1)))
+			print += format_set(*(++format), lstarg);
 		else
-			print += print_char(format[i]);
-		i++;
+			print += print_char(*format);
+		format++;
 	}
 	return (va_end(lstarg), print);
 }

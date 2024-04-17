@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:45:48 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/19 15:54:31 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:08:54 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+/* LIBFT PROTOTYPES */
+
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-size_t	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -69,10 +71,14 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+/* PRINTF PROTOTYPES */
+
+# define SPECIFIERS	"cspdiuxX%"
+
 int		print_char(char c);
+int		print_num(int num);
 int		print_string(char *str);
 int		print_address(void *ptr);
-int		print_num(int num);
 int		print_unum(unsigned int num);
 int		print_hex(unsigned int num, char set);
 int		ft_printf(const char *format, ...);

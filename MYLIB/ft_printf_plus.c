@@ -5,33 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 19:19:43 by abdel             #+#    #+#             */
-/*   Updated: 2024/01/06 17:36:00 by abadouab         ###   ########.fr       */
+/*   Created: 2023/11/29 19:19:43 by abadouab          #+#    #+#             */
+/*   Updated: 2024/04/17 09:03:19 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-static	int	address_plus(unsigned long num, char set)
+static int	address_plus(unsigned long num)
 {
-	int				len;
-	char			*base;
+	int		len;
+	char	*base;
 
 	len = 0;
 	base = "0123456789abcdef";
 	if (num > 15)
-		len += address_plus(num / 16, set);
+		len += address_plus(num / 16);
 	len += print_char(base[num % 16]);
 	return (len);
 }
 
 int	print_address(void *ptr)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	len += print_string("0x");
-	len += address_plus((unsigned long)ptr, 'x');
+	len += address_plus((unsigned long)ptr);
 	return (len);
 }
 
@@ -67,8 +67,8 @@ int	print_unum(unsigned int num)
 
 int	print_hex(unsigned int num, char set)
 {
-	int				len;
-	char			*base;
+	int		len;
+	char	*base;
 
 	len = 0;
 	base = NULL;

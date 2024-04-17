@@ -6,15 +6,15 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 22:58:30 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/18 20:41:44 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:04:32 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!s)
