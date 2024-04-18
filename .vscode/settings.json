@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "istream": "c",
-        "tuple": "c",
-        "_pthread_attr_t.h": "c"
-    }
-}
