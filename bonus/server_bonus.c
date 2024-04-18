@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/18 18:47:26 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:57:39 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	message_handler(t_data *data)
 		data->bytes = 3;
 	else if (data->mess >= 192)
 		data->bytes = 2;
-	if (data->bytes != data->set)
+	if (data->bytes < data->set)
 		data->message[data->set++] = data->mess;
 	if (!data->bytes)
 		ft_printf("%c", data->mess);

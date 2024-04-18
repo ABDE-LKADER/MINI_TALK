@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:13:13 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/17 16:58:43 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:49:47 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 # define RST "\033[0m"
 
 # define IGNORE 1
-# define WAIT_TIME 200
+# define WAIT_TIME 400
 
 #endif

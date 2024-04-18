@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/18 18:47:10 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:59:50 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	signal_handler(int server_pid, unsigned char mes)
 static void	feedback(int sig)
 {
 	(void)sig;
-	ft_printf("\033[1;33m[SUCCESS]: \033[0m");
+	ft_printf(YLW"[SUCCESS]: "RST);
 	ft_printf("Message was received to the server!\n");
 }
 
@@ -83,6 +83,6 @@ int	main(int ac, char **av)
 	error_handler_plus(server_pid);
 	while (*av[2])
 		signal_handler(server_pid, *av[2]++);
-	return (signal_handler(server_pid, '\0'),
-		signal_handler(server_pid, '\n'), EXIT_SUCCESS);
+	return (signal_handler(server_pid, '\n'),
+		signal_handler(server_pid, '\0'), EXIT_SUCCESS);
 }
