@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/18 18:18:31 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:47:26 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	message_handler(t_data *data)
 		data->bytes = 0;
 		data->set = 0;
 	}
-	data->bits= 0;
+	data->bits = 0;
 	data->mess = 0;
 	g_set_bit = 128;
 }
