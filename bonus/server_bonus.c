@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 11:30:46 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:44:52 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	message_handler(t_data *data)
 	else if (data->bytes == data->set)
 	{
 		ft_printf("%s", data->save);
-		ft_bzero(data->save, BYTE);
+		ft_bzero(data->save, SIZE);
 		(1) && (data->bytes = 0, data->check = 0, data->set = 0);
 	}
 	(1) && (data->bits = 0, data->mess = 0, g_set_bit = 128);
@@ -72,9 +72,9 @@ static void	signal_handler(int signal_client, siginfo_t *sig_inf, void *none)
 		data.mess |= g_set_bit;
 	g_set_bit >>= 1;
 	data.bits++;
-	if (data.bits == BYTE && data.mess)
+	if (data.bits == 8 && data.mess)
 		message_handler(&data);
-	if (data.bits == BYTE && !data.mess)
+	if (data.bits == 8 && !data.mess)
 		kill(sig_inf->si_pid, SIGUSR1);
 }
 
