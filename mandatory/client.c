@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 10:10:08 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:29:41 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ static void	error_handler(int ac, char *av)
 
 static void	error_handler_plus(int server_pid)
 {
-	if (kill(server_pid, 0) == -1)
-	{
-		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
-		write(2, "-> Provide a valid PID <the server pid> please.\n", 48);
-		exit (EXIT_FAILURE);
-	}
 	if (server_pid <= 0)
 	{
 		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
 		write(2, "-> Provide a valid PID <greater than 0> please.\n", 48);
+		exit (EXIT_FAILURE);
+	}
+	if (kill(server_pid, 0) == -1)
+	{
+		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
+		write(2, "-> Provide a valid PID <the server pid> please.\n", 48);
 		exit (EXIT_FAILURE);
 	}
 }
