@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 18:13:13 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/18 20:04:11 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:57:01 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define RED "\033[1;31m"
 # define RST "\033[0m"
 
+# define BYTE 8
+# define WAIT_TIME 400
+
 typedef struct s_data
 {
 	int				set;
@@ -30,9 +33,7 @@ typedef struct s_data
 	int				bytes;
 	int				check;
 	int				old_pid;
-	unsigned char	message[8];
+	unsigned char	save[BYTE];
 }					t_data;
-
-# define WAIT_TIME 400
 
 #endif
