@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:48:20 by abadouab          #+#    #+#             */
-/*   Updated: 2024/03/10 19:37:36 by abadouab         ###   ########.fr       */
+/*   Updated: 2023/12/07 21:15:25 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	i = 0;
 	len = ft_strlen(src);
-	if (!dstsize)
-		return (len);
-	while (src[i] && i < dstsize - 1)
+	if (dstsize)
 	{
-		dst[i] = src[i];
-		i++;
+		while (src[i] && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (len);
 }
