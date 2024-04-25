@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:17 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 11:44:52 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:02:51 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	g_set_bit = 128;
 
 static void	error_handler(void)
 {
-	write(2, RED"Usage: "RST, 18);
-	write(2, "./server <empty>\n", 17);
+	ft_putstr_fd(RED"Usage: "RST, 2);
+	ft_putendl_fd("./server <empty>", 2);
 	exit (EXIT_FAILURE);
 }
 

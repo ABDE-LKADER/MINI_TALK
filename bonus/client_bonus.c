@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 11:34:21 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 11:29:07 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:10:21 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static void	error_handler(int ac, char *av)
 {
 	if (ac != 3)
 	{
-		write(2, RED"Usage: "RST, 18);
-		write(2, "./client <server_pid> <message>\n", 32);
-		exit (EXIT_FAILURE);
+		ft_putstr_fd(RED"Usage: "RST, 2);
+		ft_putendl_fd("./client <server_pid> <message>", 2);
+		exit(EXIT_FAILURE);
 	}
 	while (*av)
 	{
 		if (!ft_strchr("-+0123456789", *av++))
 		{
-			write(2, RED"Error: "RST"Invalid server PID.\n", 38);
-			write(2, YEL"-> Provide a valid PID ", 30);
-			write(2, "<numeric value only> please.\n", 29);
-			exit (EXIT_FAILURE);
+			ft_putendl_fd(RED"Error: "RST"Invalid server PID.", 2);
+			ft_putstr_fd(YEL"-> Provide a valid PID ", 2);
+			ft_putendl_fd("<numeric value only> ..."RST, 2);
+			exit(EXIT_FAILURE);
 		}
 	}
 }
@@ -36,15 +36,15 @@ static void	error_handler_plus(int server_pid)
 {
 	if (server_pid <= 0)
 	{
-		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
-		write(2, "-> Provide a valid PID <greater than 0> please.\n", 48);
-		exit (EXIT_FAILURE);
+		ft_putendl_fd(RED"Error: "RST"Invalid server PID."YEL, 2);
+		ft_putendl_fd("-> Provide a valid PID <greater than 0> ..."RST, 2);
+		exit(EXIT_FAILURE);
 	}
 	if (kill(server_pid, 0) == -1)
 	{
-		write(2, RED"Error: "RST"Invalid server PID.\n"YEL, 45);
-		write(2, "-> Provide a valid PID <the server pid> please.\n", 48);
-		exit (EXIT_FAILURE);
+		ft_putendl_fd(RED"Error: "RST"Invalid server PID."YEL, 2);
+		ft_putendl_fd("-> Provide a valid PID <the server pid> ..."RST, 2);
+		exit(EXIT_FAILURE);
 	}
 }
 
